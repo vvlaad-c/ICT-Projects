@@ -42,10 +42,12 @@ check_credentials(user_id)
 def display_option_menu(user_id):
     user_choice = pyip.inputMenu(["display balance", "withdraw money", "deposit money", "exit"])
 
+    # Fetching the values from the accDetails list
     user_balance = accDetails[user_id, 1]
     over_draft_limit = accDetails[user_id, 2]
     withdrawal_limit = accDetails[user_id, 3]
 
+    # Determining what every user choice will do
     if user_choice == "4":
         quit()
 
