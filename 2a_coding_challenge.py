@@ -33,4 +33,36 @@ def check_credentials(user_id):
     else:
         print("Invalid credentials, please try again...")
         check_credentials(user_id)
+
+# Calling the functions
+user_id = get_ID()
+check_credentials(user_id)
+
+# Displaying the menu with options
+def display_option_menu(user_id):
+    user_choice = pyip.inputMenu(["display balance", "withdraw money", "deposit money", "exit"])
+
+    user_balance = accDetails[user_id, 1]
+    over_draft_limit = accDetails[user_id, 2]
+    withdrawal_limit = accDetails[user_id, 3]
+
+    if user_choice == "4":
+        quit()
+
+    elif user_choice == "1":
+        print(user_balance)
+
+    elif user_choice == "2":
+        withdrawal_value = pyip.inputNum(prompt="How much money would you like to withdraw? ")
+        if withdrawal_value < withdrawal_limit and user_balance > over_draft_limit:
+            user_balance -= withdrawal_value
+            print("Transaction complete!")
+            print(f"New balance: {user_balance}")
     
+    elif user_choice == "3":
+        deposit_value = pyip.inputNum(prompt="How much money would you like to deposit? ", min=10)
+        user_balance += deposit_value
+        print(f"New balance {user_balance}")
+
+# Calling the display option menu function
+display_option_menu(user_id)
