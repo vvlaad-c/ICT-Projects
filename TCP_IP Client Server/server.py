@@ -7,7 +7,7 @@ PORT = 65432
 # Setting up the server
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket:
     # Binding the socket to the host and the port
-    socket.bind(HOST, PORT)
+    socket.bind((HOST, PORT))
     # Listening for requests
     socket.listen()
     conection, address = socket.accept()
