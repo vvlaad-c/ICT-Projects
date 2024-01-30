@@ -16,12 +16,3 @@ def retrieve_message():
         client_socket.sendall(b"RETRIEVE")
         data = client_socket.recv(1024)
         return data.decode("utf-8")
-
-
-send_message("2:High")
-send_message("1:Medium")
-send_message("3:Low")
-
-# Retrieve and print messages
-for _ in range(3):
-    print(retrieve_message())
